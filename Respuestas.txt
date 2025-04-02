@@ -1,0 +1,7 @@
+No, porque el archivo fue creado en la rama Opcion_2 y todavía no lo fusioné con main. Cada rama tiene su propio contenido hasta que se hace un merge.
+
+2. ¿Qué diferencias notas en 'Source Control' después de agregar Respuestas.txt en main?
+Ahora en Source Control veo que Respuestas.txt aparece como un nuevo cambio en main. Sin embargo, los cambios de Opcion_2 aún no están en esta rama, ya que siguen en su propia rama separada.
+
+3. ¿Qué notas después de hacer el merge en main y revisar 'Source Control'?
+Después de hacer el merge, ahora veo que tp2_1_2.c también aparece en main, junto con Respuestas.txt. También noto que ya no hay diferencias entre las ramas porque los cambios de Opcion_2 fueron combinados con main.
