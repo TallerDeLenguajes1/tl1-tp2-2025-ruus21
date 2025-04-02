@@ -14,6 +14,8 @@ char *tipos[6] = {"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
 
 void generarPCs(struct compu pcs[], int cantidad);
 void listarPCs(struct compu pcs[], int cantidad);
+void mostrarMasVieja(struct compu pcs[], int cantidad);
+
 
 int main() {
     srand(time(NULL));
@@ -21,6 +23,8 @@ int main() {
     
     generarPCs(pcs, CANT_PC);
     listarPCs(pcs, CANT_PC);
+    mostrarMasVieja(pcs, CANT_PC);
+
 
     return 0;
 }
@@ -40,4 +44,15 @@ void listarPCs(struct compu pcs[], int cantidad) {
         printf("PC: Velocidad: %d GHz, Año: %d, Núcleos: %d, Tipo CPU: %s\n",
                pcs[i].velocidad, pcs[i].anio, pcs[i].cantidad_nucleos, pcs[i].tipo_cpu);
     }
+}
+
+void mostrarMasVieja(struct compu pcs[], int cantidad) {
+    int indiceMasVieja = 0;
+    for (int i = 1; i < cantidad; i++) {
+        if (pcs[i].anio < pcs[indiceMasVieja].anio) {
+            indiceMasVieja = i;
+        }
+    }
+    printf("\nPC más vieja: Velocidad: %d GHz, Año: %d, Núcleos: %d, Tipo CPU: %s\n",
+           pcs[indiceMasVieja].velocidad, pcs[indiceMasVieja].anio, pcs[indiceMasVieja].cantidad_nucleos, pcs[indiceMasVieja].tipo_cpu);
 }
