@@ -22,10 +22,7 @@ int main() {
     PC *pcs;
     pcs = malloc(CANT_PC * sizeof(PC));
 
-    char **tipos;
-    tipos = (char *[]){"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
-
-    if (pcs == NULL) return 1;
+    char *tipos[6] = {"Intel", "AMD", "Celeron", "Athlon", "Core", "Pentium"};
 
     generarPCs(pcs, CANT_PC, tipos);
     listarPCs(pcs, CANT_PC);
@@ -33,12 +30,12 @@ int main() {
     mostrarMasVeloz(pcs, CANT_PC);
 
     free(pcs);
-
     return 0;
 }
 
 void generarPCs(PC pcs[], int cantidad, char *tipos[]) {
-    for (int i = 0; i < cantidad; i++) {
+    int i;
+    for (i = 0; i < cantidad; i++) {
         pcs[i].velocidad = rand() % 3 + 1;
         pcs[i].anio = rand() % 10 + 2015;
         pcs[i].cantidad_nucleos = rand() % 8 + 1;
@@ -47,33 +44,32 @@ void generarPCs(PC pcs[], int cantidad, char *tipos[]) {
 }
 
 void listarPCs(PC pcs[], int cantidad) {
+    int i;
     printf("\nLista de PCs:\n");
-    for (int i = 0; i < cantidad; i++) {
-        printf("PC: Velocidad: %d GHz, Año: %d, Núcleos: %d, Tipo CPU: %s\n",
+    for (i = 0; i < cantidad; i++) {
+        printf("PC: Velocidad: %d GHz, Anio: %d, Nucleos: %d, Tipo CPU: %s\n",
                pcs[i].velocidad, pcs[i].anio, pcs[i].cantidad_nucleos, pcs[i].tipo_cpu);
     }
 }
 
 void mostrarMasVieja(PC pcs[], int cantidad) {
-    int indiceMasVieja = 0;
-    for (int i = 1; i < cantidad; i++) {
-        if (pcs[i].anio < pcs[indiceMasVieja].anio) {
-            indiceMasVieja = i;
+    int i, indice = 0;
+    for (i = 1; i < cantidad; i++) {
+        if (pcs[i].anio < pcs[indice].anio) {
+            indice = i;
         }
     }
-    printf("\nPC más vieja: Velocidad: %d GHz, Año: %d, Núcleos: %d, Tipo CPU: %s\n",
-           pcs[indiceMasVieja].velocidad, pcs[indiceMasVieja].anio,
-           pcs[indiceMasVieja].cantidad_nucleos, pcs[indiceMasVieja].tipo_cpu);
+    printf("\nPC mas vieja: Velocidad: %d GHz, Anio: %d, Nucleos: %d, Tipo CPU: %s\n",
+           pcs[indice].velocidad, pcs[indice].anio, pcs[indice].cantidad_nucleos, pcs[indice].tipo_cpu);
 }
 
 void mostrarMasVeloz(PC pcs[], int cantidad) {
-    int indiceMasVeloz = 0;
-    for (int i = 1; i < cantidad; i++) {
-        if (pcs[i].velocidad > pcs[indiceMasVeloz].velocidad) {
-            indiceMasVeloz = i;
+    int i, indice = 0;
+    for (i = 1; i < cantidad; i++) {
+        if (pcs[i].velocidad > pcs[indice].velocidad) {
+            indice = i;
         }
     }
-    printf("\nPC más veloz: Velocidad: %d GHz, Año: %d, Núcleos: %d, Tipo CPU: %s\n",
-           pcs[indiceMasVeloz].velocidad, pcs[indiceMasVeloz].anio,
-           pcs[indiceMasVeloz].cantidad_nucleos, pcs[indiceMasVeloz].tipo_cpu);
+    printf("\nPC mas veloz: Velocidad: %d GHz, Anio: %d, Nucleos: %d, Tipo CPU: %s\n",
+           pcs[indice].velocidad, pcs[indice].anio, pcs[indice].cantidad_nucleos, pcs[indice].tipo_cpu);
 }
